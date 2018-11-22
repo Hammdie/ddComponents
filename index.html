@@ -105,7 +105,8 @@
     var goal = 60;
     var value = 30;
     var scala = {begin: 15, length: 30}
-    var valueColor = '#007A93';
+    var colorCircle = '#007A93';
+    var colorValue = '#AAC891';
 
     function getWidth(el) {
         return el.node().getBBox().width;
@@ -126,7 +127,24 @@
         return {x: size / 2, y: (size - R * 2) / 2};
     }
 
-    function drawValue(svgContainer, to) {
+    function drawValue(svgContainer, value) {
+
+        svgContainer.append("circle")
+            .attr('fill', colorValue)
+            .attr('r', 10)
+            .attr('cx', getCentre().x)
+            .attr('cy', getCentre().y);
+
+
+        var to = calcValuePoint(value);
+
+        svgContainer.append("circle")
+            .attr('fill', colorValue)
+            .attr('r', 10)
+            .attr('cx', to.x)
+            .attr('cy', to.y);
+
+
         var calcValue = function () {
             return value > 50 ? '1' : '0'
         }
@@ -136,7 +154,7 @@
         svgContainer.append("path")
             .attr('d', 'M' + pointCentre.x + ' ' + pointCentre.y + ' A' + R + ' ' + R + ' 0, ' + calcValue() + ' 1,' + to.x + ' ' + to.y)
             .attr('fill', 'transparent')
-            .attr('stroke', 'black')
+            .attr('stroke', colorValue)
             .attr('stroke-width', '20');
     }
 
@@ -194,7 +212,6 @@
 
 
     var clrBackground = 'grey';
-    var clrPai = valueColor;
 
     //Make an SVG Container
     var svgContainer = d3.select("#valuePai").append("svg")
@@ -210,7 +227,7 @@
 
     var crcMain = svgContainer.append("circle")
         .attr('fill', 'transparent')
-        .attr('stroke', clrPai)
+        .attr('stroke', colorCircle)
         .attr('stroke-width', '10')
         .attr('r', R)
         .attr('cx', size / 2)
@@ -220,23 +237,9 @@
         .text(value + ' %');
 
 
-    var crcMain = svgContainer.append("circle")
-        .attr('fill', 'black')
-        .attr('r', 10)
-        .attr('cx', getCentre().x)
-        .attr('cy', getCentre().y);
 
 
-    var objVal = calcValuePoint(value);
-
-    console.log(objVal);
-    var crcMain = svgContainer.append("circle")
-        .attr('fill', 'black')
-        .attr('r', 10)
-        .attr('cx', objVal.x)
-        .attr('cy', objVal.y);
-
-    drawValue(svgContainer, objVal);
+    drawValue(svgContainer, value);
 
     center(rctBackground, txtValue);
     drawGoal(goal);
