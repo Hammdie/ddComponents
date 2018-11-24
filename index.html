@@ -1,110 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-transform/1.0.4/d3-transform.js"></script>
-    <style>
-        body {
-            font-family: 'Helvetica Neue,sans-serif';
-        }
-    </style>
+<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-transform/1.0.4/d3-transform.js"></script>
+<style>
+    body {
+        font-family: 'Helvetica Neue,sans-serif';
+    }
+
+    .primaryBox {
+        background: #003340
+    }
+
+
+</style>
 </head>
 
 <body>
 
-
-
-
-
-<svg width="375px" height="330px" viewBox="0 0 375 330" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-        <circle id="path-1" cx="89" cy="89" r="89"></circle>
-    </defs>
-    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="External-Hires---Default-E1-Screen" transform="translate(0.000000, -88.000000)">
-            <g id="Overview-Chart" transform="translate(0.000000, 88.000000)">
-                <rect id="Background" fill="#003340" fill-rule="nonzero" x="0" y="0" width="375" height="330"></rect>
-                <g id="Women" transform="translate(301.000000, 150.546828)" font-family="Helvetica" font-weight="normal" line-spacing="21">
-                    <text font-size="14" fill="#A6CAD8">
-                        <tspan x="0" y="35.4531722">Wome</tspan>
-                        <tspan x="0" y="56.4531722">n</tspan>
-                    </text>
-                    <text id="40" font-size="36" letter-spacing="-2" fill="#FFFFFF">
-                        <tspan x="5" y="35.4531722">4</tspan>
-                        <tspan x="5" y="56.4531722" letter-spacing="-2.9000001">0</tspan>
-                    </text>
-                </g>
-                <g id="Circle-Diagram" transform="translate(96.000000, 77.000000)">
-                    <g id="Circle" transform="translate(23.000000, 21.933535)" fill-rule="nonzero">
-                        <ellipse id="Full-Circle" stroke="#007A93" stroke-width="3.51" cx="66.7641343" cy="66.5624299" rx="66.4311354" ry="66.2304371"></ellipse>
-                        <path d="M56.162617,131.954074 C59.6148105,132.506063 63.1558776,132.792867 66.7641343,132.792867 C103.453037,132.792867 133.19527,103.14049 133.19527,66.5624299 C133.19527,29.9843696 103.453037,0.331992841 66.7641343,0.331992841" id="Empty-Circle" stroke="#AAC891" stroke-width="7.8" stroke-linecap="round"></path>
-                    </g>
-                    <g id="Goal-Indicator">
-                        <g id="Goal-Circle">
-                            <mask id="mask-2" fill="white">
-                                <use xlink:href="#path-1"></use>
-                            </mask>
-                            <use id="Mask" fill="" fill-rule="nonzero" xlink:href="#path-1"></use>
-                            <path d="M88.7641343,168.925608 C133.318806,168.925608 169.437504,132.91603 169.437504,88.4959647 C169.437504,44.0758991 133.318806,8.06632104 88.7641343,8.06632104 C44.2094624,8.06632104 8.09076444,44.0758991 8.09076444,88.4959647 C8.09076444,132.91603 44.2094624,168.925608 88.7641343,168.925608 Z" id="Empty-Circle" stroke="#5097AB" stroke-width="3.51" stroke-dasharray="1.169999969005585,5.850000000000001" fill-rule="nonzero" mask="url(#mask-2)"></path>
-                        </g>
-                        <text id="Goal-40%" font-family="Helvetica" font-size="15.6" font-weight="normal" line-spacing="23.4" fill="#A6CAD8">
-                            <tspan x="151" y="160.522659">Goal </tspan>
-                            <tspan x="151" y="183.922659">40%</tspan>
-                        </text>
-                        <path d="M137.5,148 L145.5,148 C146.328427,148 147,148.671573 147,149.5 L147,149.5 C147,150.328427 146.328427,151 145.5,151 L137.5,151 C136.671573,151 136,150.328427 136,149.5 L136,149.5 C136,148.671573 136.671573,148 137.5,148 Z" fill="#5097AB" fill-rule="nonzero" transform="translate(141.500000, 149.500000) rotate(50.000000) translate(-141.500000, -149.500000) "></path>
-                    </g>
-                    <g id="Value" transform="translate(58.000000, 48.000000)" font-weight="normal">
-                        <text id="54" font-family="Helvetica" font-size="48.1" line-spacing="46.8" letter-spacing="-3" fill="#FFFFFF">
-                            <tspan x="1.5" y="47">5</tspan>
-                            <tspan x="0" y="93.8">4</tspan>
-                        </text>
-                        <text id="%" font-family="AvenirNext-Regular, Avenir Next" font-size="16.9" line-spacing="46.8" letter-spacing="-2.60351384" fill="#FFFFFF">
-                            <tspan x="48.5129069" y="33.9">%</tspan>
-                        </text>
-                        <text id="Women" font-family="Helvetica" font-size="19.5" line-spacing="27.3" letter-spacing="0.844999969" fill="#A6CAD8">
-                            <tspan x="3.76207526" y="64.5">Wome</tspan>
-                            <tspan x="27.6050147" y="91.8">n</tspan>
-                        </text>
-                    </g>
-                </g>
-                <g id="Men" transform="translate(40.000000, 150.543807)" font-family="Helvetica" font-weight="normal" line-spacing="21">
-                    <text font-size="14" fill="#A6CAD8">
-                        <tspan x="4" y="35.4561934">Me</tspan>
-                        <tspan x="4" y="56.4561934">n</tspan>
-                    </text>
-                    <text id="34" font-size="36" letter-spacing="-2" fill="#FFFFFF">
-                        <tspan x="0" y="35.4561934">3</tspan>
-                        <tspan x="0" y="56.4561934" letter-spacing="-2.9000001">4</tspan>
-                    </text>
-                </g>
-                <g id="Headline" transform="translate(146.000000, 15.000000)" fill="#FFFFFF" font-family="Helvetica" font-size="22" font-weight="normal" line-spacing="30">
-                    <text>
-                        <tspan x="0" y="21">MB Vans</tspan>
-                    </text>
-                </g>
-                <text id="Last-updated-on-the" font-family="Helvetica" font-size="14" font-weight="normal" line-spacing="21" fill="#FFFFFF">
-                    <tspan x="110.5625" y="62">Last updated on the mm/</tspan>
-                    <tspan x="174" y="83">yyyy</tspan>
-                </text>
-            </g>
-        </g>
-    </g>
-</svg>
-
-
-
-
-
-
 <div id="valuePai" style="width: 300px; height: 300px;"></div>
+<div id="valuePai1" class="primaryBox" style="width: 300px; height: 300px;"></div>
 
 <script>
 
     var R = 120;
     var size = 500;
-    var goal = 60;
-    var value = 30;
-    var scala = {begin: 15, length: 30}
+    var goal = 45;
+    var value = 60;
+    var scala = {begin: 15, length: 10}
     var colorCircle = '#007A93';
     var colorValue = '#AAC891';
 
@@ -128,12 +50,12 @@
     }
 
     function drawValue(svgContainer, value) {
-
+        var pointCentre = getCentre();
         svgContainer.append("circle")
             .attr('fill', colorValue)
             .attr('r', 10)
-            .attr('cx', getCentre().x)
-            .attr('cy', getCentre().y);
+            .attr('cx', pointCentre.x)
+            .attr('cy', pointCentre.y);
 
 
         var to = calcValuePoint(value);
@@ -149,7 +71,7 @@
             return value > 50 ? '1' : '0'
         }
 
-        var pointCentre = getCentre();
+
 
         svgContainer.append("path")
             .attr('d', 'M' + pointCentre.x + ' ' + pointCentre.y + ' A' + R + ' ' + R + ' 0, ' + calcValue() + ' 1,' + to.x + ' ' + to.y)
@@ -176,9 +98,16 @@
     }
 
 
-    function drawGoalScalaSell(value) {
-        var pointFrom = calcValuePoint(value, R + scala.begin);
-        var pointTo = calcValuePoint(value, R + scala.length);
+    function drawGoalScalaSell(val, max) {
+        var max = max || value;
+        var pointFrom = calcValuePoint(val, R + scala.begin);
+
+        function getLength(val) {
+            return (scala.length * val / max) + 3;
+        }
+
+        var pointTo = calcValuePoint(val, R + scala.begin + getLength(val));
+
 
         svgContainer.append("path")
             .attr('d', 'M' + pointFrom.x + ' ' + +pointFrom.y + ' L' + pointTo.x + ' ' + pointTo.y)
@@ -187,18 +116,19 @@
     }
 
 
-    function drawGoal(value) {
-        for (var i = 0; i <= value; i++) {
-            drawGoalScalaSell(i);
+    function drawGoal(val) {
+        for (var i = 0; i <= val; i++) {
+            drawGoalScalaSell(i, val);
         }
 
-        var pointFrom = calcValuePoint(value, R + scala.begin);
-        var pointTo = calcValuePoint(value, R + scala.length * 1.6);
+        var pointFrom = calcValuePoint(val, R + scala.begin);
+        var pointTo = calcValuePoint(val, R + scala.begin + scala.length * 1.6);
 
         svgContainer.append("path")
             .attr('d', 'M' + pointFrom.x + ' ' + pointFrom.y + ' L' + pointTo.x + ' ' + pointTo.y)
             .attr('stroke', 'black')
-            .attr('stroke-width', '1');
+            .attr('stroke-width', '3');
+
 
         function getDirection() {
             return goal > 50 ? '-' : '';
@@ -210,8 +140,6 @@
             .attr('stroke-width', '1');
     }
 
-
-    var clrBackground = 'grey';
 
     //Make an SVG Container
     var svgContainer = d3.select("#valuePai").append("svg")
@@ -225,7 +153,7 @@
         .attr("height", size)
         .attr('fill', 'transparent');
 
-    var crcMain = svgContainer.append("circle")
+    svgContainer.append("circle")
         .attr('fill', 'transparent')
         .attr('stroke', colorCircle)
         .attr('stroke-width', '10')
@@ -237,8 +165,6 @@
         .text(value + ' %');
 
 
-
-
     drawValue(svgContainer, value);
 
     center(rctBackground, txtValue);
@@ -247,4 +173,5 @@
 
 </script>
 </body>
+<script src="build/main.js"></script>
 </html>
