@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-transform/1.0.4/d3-transform.js"></script>
 <style>
     body {
         font-family: 'Helvetica Neue,sans-serif';
@@ -10,168 +8,13 @@
     .primaryBox {
         background: #003340
     }
-
-
 </style>
 </head>
 
 <body>
 
-<div id="valuePai" style="width: 300px; height: 300px;"></div>
-<div id="valuePai1" class="primaryBox" style="width: 300px; height: 300px;"></div>
+<div id="valuePai" class="primaryBox" style="width: 300px; height: 300px;"></div>
 
-<script>
-
-    var R = 120;
-    var size = 500;
-    var goal = 45;
-    var value = 60;
-    var scala = {begin: 15, length: 10}
-    var colorCircle = '#007A93';
-    var colorValue = '#AAC891';
-
-    function getWidth(el) {
-        return el.node().getBBox().width;
-    }
-
-    function getHeight(el) {
-        return el.node().getBBox().height;
-    }
-
-    function center(rect, el) {
-        var y = (getHeight(rect) - getHeight(el)) / 2;
-        var x = (getWidth(rect) - getWidth(el)) / 2;
-
-        el.attr("transform", d3Transform().translate([x, y + 50]));
-    }
-
-    function getCentre() {
-        return {x: size / 2, y: (size - R * 2) / 2};
-    }
-
-    function drawValue(svgContainer, value) {
-        var pointCentre = getCentre();
-        svgContainer.append("circle")
-            .attr('fill', colorValue)
-            .attr('r', 10)
-            .attr('cx', pointCentre.x)
-            .attr('cy', pointCentre.y);
-
-
-        var to = calcValuePoint(value);
-
-        svgContainer.append("circle")
-            .attr('fill', colorValue)
-            .attr('r', 10)
-            .attr('cx', to.x)
-            .attr('cy', to.y);
-
-
-        var calcValue = function () {
-            return value > 50 ? '1' : '0'
-        }
-
-
-
-        svgContainer.append("path")
-            .attr('d', 'M' + pointCentre.x + ' ' + pointCentre.y + ' A' + R + ' ' + R + ' 0, ' + calcValue() + ' 1,' + to.x + ' ' + to.y)
-            .attr('fill', 'transparent')
-            .attr('stroke', colorValue)
-            .attr('stroke-width', '20');
-    }
-
-
-    /**
-     *
-     * @param value in percent
-     * @param dist distance from centre (Radius if nothing)
-     * @returns {{x: number, y: number}}
-     */
-    function calcValuePoint(value, dist) {
-        dist = dist || R;
-        value = 360 / 100 * value;
-        value = 90 - value;
-        var angle = value === 0 ? 0 : value * Math.PI / 180;
-        var dX = dist * Math.cos(angle);
-        var dY = dist * Math.sin(angle);
-        return {x: size / 2 + dX, y: size / 2 - dY}
-    }
-
-
-    function drawGoalScalaSell(val, max) {
-        var max = max || value;
-        var pointFrom = calcValuePoint(val, R + scala.begin);
-
-        function getLength(val) {
-            return (scala.length * val / max) + 3;
-        }
-
-        var pointTo = calcValuePoint(val, R + scala.begin + getLength(val));
-
-
-        svgContainer.append("path")
-            .attr('d', 'M' + pointFrom.x + ' ' + +pointFrom.y + ' L' + pointTo.x + ' ' + pointTo.y)
-            .attr('stroke', 'black')
-            .attr('stroke-width', '1');
-    }
-
-
-    function drawGoal(val) {
-        for (var i = 0; i <= val; i++) {
-            drawGoalScalaSell(i, val);
-        }
-
-        var pointFrom = calcValuePoint(val, R + scala.begin);
-        var pointTo = calcValuePoint(val, R + scala.begin + scala.length * 1.6);
-
-        svgContainer.append("path")
-            .attr('d', 'M' + pointFrom.x + ' ' + pointFrom.y + ' L' + pointTo.x + ' ' + pointTo.y)
-            .attr('stroke', 'black')
-            .attr('stroke-width', '3');
-
-
-        function getDirection() {
-            return goal > 50 ? '-' : '';
-        }
-
-        svgContainer.append("path")
-            .attr('d', 'M' + pointTo.x + ' ' + pointTo.y + ' l' + getDirection() + '70 0')
-            .attr('stroke', 'black')
-            .attr('stroke-width', '1');
-    }
-
-
-    //Make an SVG Container
-    var svgContainer = d3.select("#valuePai").append("svg")
-        .attr("viewBox", "0 0 " + size + ' ' + size)
-
-
-    var rctBackground = svgContainer.append("rect")
-        .attr("x", 0)
-        .attr("y", 0)
-        .attr("width", size)
-        .attr("height", size)
-        .attr('fill', 'transparent');
-
-    svgContainer.append("circle")
-        .attr('fill', 'transparent')
-        .attr('stroke', colorCircle)
-        .attr('stroke-width', '10')
-        .attr('r', R)
-        .attr('cx', size / 2)
-        .attr('cy', size / 2);
-
-    var txtValue = svgContainer.append("text").attr('font-size', '47px').attr('font-family', 'Helvetica Neue,sans-serif')
-        .text(value + ' %');
-
-
-    drawValue(svgContainer, value);
-
-    center(rctBackground, txtValue);
-    drawGoal(goal);
-
-
-</script>
 </body>
 <script src="build/main.js"></script>
 </html>

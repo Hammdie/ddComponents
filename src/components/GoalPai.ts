@@ -132,10 +132,12 @@ export class GoalPai {
         let line = new Line();
         for (let i = 0; i <= this._goal; i++) {
             scaleDonut.radiusOuter = R + goalScala.begin + i / this._goal * 10 + 3;
+            let opacity =  i / this._goal + 0.3;
             line = scaleDonut.getInnerOuterSection(360 / 100 * i);
             this.svgContainer.append("path")
                 .attr('d', 'M' + line.begin.x + ' ' + line.begin.y + ' L' + line.end.x + ' ' + line.end.y)
                 .attr('stroke', this.colorCircle)
+                .attr('stroke-opacity', opacity)
                 .attr('stroke-width', '3');
         }
         scaleDonut.radiusOuter = R + goalScala.begin + 30;
