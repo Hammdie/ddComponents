@@ -1,5 +1,5 @@
-import {GoalPai} from "./components/GoalPai";
+import {GoalPie} from "./components/GoalPie";
 
-const goalPai = new GoalPai('#valuePai', 'Women');
+const goalPai = new GoalPie('#valuePie', 'Women');
 goalPai.value = 60;
 goalPai.goal = 30;

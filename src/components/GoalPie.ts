@@ -7,7 +7,7 @@ const size: number = 500;
 const R: number = 120;
 const goalScala = {begin: 15, length: 10}
 
-export class GoalPai {
+export class GoalPie {
     private _goal: number = 0;
     private _value: number = 0;
     public svgContainer:any;
