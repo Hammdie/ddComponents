@@ -121,6 +121,8 @@ export class GoalPie {
 
         this._elCircleValueTo = this.svgContainer.append("circle")
             .attr('fill', this.colorValue)
+            .attr('cx', pointCentre.x)
+            .attr('cy', pointCentre.y)
             .attr('r', 10);
 
         this._elValuePath = this.svgContainer.append("path")
