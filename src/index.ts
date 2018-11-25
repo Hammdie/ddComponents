@@ -1,14 +1,17 @@
 import {GoalPie} from "./components/GoalPie";
-import {timer} from "rxjs/index";
 
-const goalPai = new GoalPie('#valuePie', 'Women');
-
-function getRandomInt(max=100) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
-
-const tmr = timer(1000, 1500);
-tmr.subscribe(() => {
-    goalPai.value = getRandomInt();
-    goalPai.goal = getRandomInt();
-});
+export function goalPie(selector: string,
+                        title: string,
+                        colorTitle = '#A6CAD8',
+                        colorValueTitle = '#FFFFFF',
+                        colorGoal = '#FFFFFF',
+                        colorCircle = '#007A93',
+                        colorValue = '#AAC891') {
+    return new GoalPie(selector,
+        title,
+        colorTitle,
+        colorValueTitle,
+        colorGoal,
+        colorCircle,
+        colorValue)
+};
