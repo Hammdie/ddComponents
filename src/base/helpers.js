@@ -1,4 +1,9 @@
+import { Point, Rect } from "./Primitives";
 var d3Transform = require('d3-transform').transform;
+export function getRect(el) {
+    var res = el.node().getBBox();
+    return new Rect(new Point(res.x, res.y), res.height, res.width);
+}
 export function getWidth(el) {
     return el.node().getBBox().width;
 }

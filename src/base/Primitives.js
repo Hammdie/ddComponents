@@ -30,10 +30,29 @@ var Base = /** @class */ (function () {
     return Base;
 }());
 export { Base };
+var Rect = /** @class */ (function (_super) {
+    __extends(Rect, _super);
+    function Rect(pos, height, width) {
+        if (height === void 0) { height = 0; }
+        if (width === void 0) { width = 0; }
+        var _this = _super.call(this, pos) || this;
+        _this.pos = pos;
+        _this.height = height;
+        _this.width = width;
+        return _this;
+    }
+    Rect.prototype.centreRect = function (rect) {
+        rect.pos.y = (this.height - rect.height) / 2;
+        rect.pos.x = (this.width - rect.width) / 2;
+        return rect;
+    };
+    return Rect;
+}(Base));
+export { Rect };
 var Square = /** @class */ (function (_super) {
     __extends(Square, _super);
     function Square(pos, side) {
-        var _this = _super.call(this, pos) || this;
+        var _this = _super.call(this, pos, side, side) || this;
         _this.pos = pos;
         _this.side = side;
         return _this;
@@ -50,7 +69,7 @@ var Square = /** @class */ (function (_super) {
         configurable: true
     });
     return Square;
-}(Base));
+}(Rect));
 export { Square };
 var Circle = /** @class */ (function (_super) {
     __extends(Circle, _super);
@@ -63,9 +82,9 @@ var Circle = /** @class */ (function (_super) {
     ;
     Circle.prototype.point = function (angle) {
         var jsAngle = 90 - angle;
-        var angle = angle === 0 ? 0 : angle * Math.PI / 180;
-        var dX = this.radius * Math.cos(jsAngle);
-        var dY = this.radius * Math.sin(jsAngle);
+        var jsAngleRadian = jsAngle === 0 ? 0 : jsAngle * Math.PI / 180;
+        var dX = this.radius * Math.cos(jsAngleRadian);
+        var dY = this.radius * Math.sin(jsAngleRadian);
         return new Point(this.center.x + dX, this.center.y - dY);
     };
     return Circle;
@@ -74,6 +93,8 @@ export { Circle };
 var Line = /** @class */ (function (_super) {
     __extends(Line, _super);
     function Line(begin, end) {
+        if (begin === void 0) { begin = new Point(); }
+        if (end === void 0) { end = new Point(); }
         var _this = _super.call(this, begin) || this;
         _this.begin = begin;
         _this.end = end;
@@ -88,12 +109,17 @@ var Donut = /** @class */ (function (_super) {
     function Donut(center, radiusInner, radiusOuter) {
         var _this = _super.call(this, center) || this;
         _this.center = center;
-        _this.radiusInner = radiusInner;
-        _this.radiusOuter = radiusOuter;
         _this.inner = new Circle(center, radiusInner);
         _this.outer = new Circle(center, radiusOuter);
         return _this;
     }
+    Object.defineProperty(Donut.prototype, "radiusOuter", {
+        set: function (val) {
+            this.outer.radius = val;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Donut.prototype.getInnerOuterSection = function (angle) {
         var begin = this.inner.point(angle);
         var end = this.outer.point(angle);
